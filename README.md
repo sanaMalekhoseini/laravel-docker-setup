@@ -34,33 +34,15 @@ Setting up Laravel in the local environment with Docker using the LEMP stack tha
 4. Change ```DB_PORT``` to ```5432```
 5. Open the ```pgAdmin``` on ```127.0.0.1:5050```
 
-## How to use Swagger
-## 📘 API Documentation with Swagger
+## How to Use Swagger (API Documentation)
 
 This project uses [L5-Swagger](https://github.com/DarkaOnLine/L5-Swagger) to auto-generate API documentation from annotations.
 
-### 🔗 Swagger UI
+---
 
-### 🛠️ Regenerate Swagger Docs
+### 🔗 Access Swagger UI
 
-Run this command to regenerate the docs (inside Docker container):
-
-```bash
-docker-compose exec app php artisan l5-swagger:generate
-/**
- * @OA\Get(
- *     path="/api/test",
- *     summary="Test endpoint",
- *     @OA\Response(response=200, description="OK")
- * )
- */
-public function test()
-{
-    return response()->json(['message' => 'OK']);
-}
-
-Once the project is running, access the API docs at:
-
+Once the project is running, open your browser and go to:
 
 
 ## How to run Laravel Commands with Docker Compose
