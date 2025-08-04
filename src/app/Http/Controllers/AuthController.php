@@ -9,18 +9,63 @@ use App\StrategyDesignPattern\Auth\GoogleLogin;
 use App\StrategyDesignPattern\Auth\LoginContext;
 use App\StrategyDesignPattern\Auth\LoginEmail;
 use App\StrategyDesignPattern\Auth\LoginMobile;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class AuthController extends Controller
 {
-    public function register(RegisterRequest $request)
+    /**
+     * @param RegisterRequest $request
+     * @return JsonResponse
+     *
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Register a new user",
+     *     tags={"auth"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+    *             @OA\Property (property="name", type="string",example="sana"),
+    *          @OA\Property (property="email",type="string", example="sana@gmail.com"),
+    *          @OA\Property (property="password",type="string", example="123456"),
+    *          @OA\Property (property="password_confrimation",type="string", example="123456"),
+     *
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *          description="user registerd successfuly",
+     *          @OA\JsonContent(
+     *              @OA\Property (property="token",type="string", description="Access token for user "),
+     *              @OA\Property (property="user", type="string", description="user details"),
+     *          ),
+     *     ),@OA\Response(
+     *          response=422,
+     *           description="validation error",
+     *           @OA\JsonContent (
+     *               @OA\Property (property="message",type="string", description="request not valid "),
+     *           ),
+     *      ),
+     * ),
+     *
+     * @OA\Info(
+     *       version="0.0.0",
+     *       title="Anophel API Documentation"
+     *   )
+     */
+    public function register(RegisterRequest $request): \Illuminate\Http\JsonResponse
     {
         $user = User::create($request->all());
 
         return response()->json($user);
     }
 
-    public function login(AuthRequest $request)
+
+    /**
+     * @param AuthRequest $request
+     * @return JsonResponse
+     */
+    public function login(AuthRequest $request): JsonResponse
     {
         $credentials = $request->validated();
 

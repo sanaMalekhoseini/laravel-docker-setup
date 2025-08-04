@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use app\repositories\productrepository;
 use illuminate\http\request;
 
-class productcontroller extends controller
+class ProductController extends controller
 {
     protected $repository;
 

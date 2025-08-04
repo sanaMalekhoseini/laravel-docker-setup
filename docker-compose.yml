@@ -10,6 +10,7 @@ services:
     volumes:
       - ./src:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./src/storage/api-docs:/usr/share/nginx/html/docs
     depends_on:
       - app
       - db
