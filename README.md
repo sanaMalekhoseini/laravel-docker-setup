@@ -11,7 +11,7 @@ Setting up Laravel in the local environment with Docker using the LEMP stack tha
 
 ## How to Install and Run the Project
 
-1. ``` git clone git@github.com:hanieas/Docker-Laravel.git ```
+1. ``` git clone https://github.com/sanaMalekhoseini/laravel-docker-setup.git ```
 2. ``` docker-compose exec app composer install ```
 3. Copy ```.env.example``` to ```.env```
 4. ```docker-compose build```
@@ -33,12 +33,32 @@ Setting up Laravel in the local environment with Docker using the LEMP stack tha
 3. Change ```DB_CONNECTION``` to ```pgsql```
 4. Change ```DB_PORT``` to ```5432```
 5. Open the ```pgAdmin``` on ```127.0.0.1:5050```
+# Laravel Setup with Docker & Swagger
+
+This project is a Laravel application pre-configured with Docker, PostgreSQL, and Swagger (OpenAPI) for API documentation.
+
+---
+## 📘 How to Use Swagger (API Documentation)
+
+This project uses [L5-Swagger](https://github.com/DarkaOnLine/L5-Swagger) to auto-generate API documentation from annotations.
+
+---
+
+### 🔗 Access Swagger UI
+
+Once the project is running, open your browser and go to:
+
+# Run migrations
+docker-compose exec app php artisan migrate
+docker-compose exec app php artisan l5-swagger:generate
 
 ## How to run Laravel Commands with Docker Compose
 
 1. ```cd src```
-2. ```docker-compose exec app php artisan {your command}``` 
+2. ```docker-compose exec app php artisan {your command}```
 
+## Swagger Url 
+http://localhost:8080/api/documentation
 ## Medium
 
 https://medium.com/@hanieasemi/setting-up-a-laravel-local-environment-with-docker-7541ae170daf
